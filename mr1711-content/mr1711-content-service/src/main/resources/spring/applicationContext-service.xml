@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--spring整合service-->
+    <!--扫描注解-->
+    <context:component-scan base-package="com.mr.content.service"/>
+
+    <!-- 发布dubbo服务 -->
+    <!-- dubbo提供服务的服务名 -->
+    <dubbo:application name="mr1711-content-service"/>
+    <!-- 连接注册中心 -->
+    <dubbo:registry address="192.168.44.128:2181" protocol="zookeeper"/>
+    <!--服务端的端口 -->
+    <dubbo:protocol port="20881" name="dubbo"/>
+
+    <!-- 发布接口 -->
+    <dubbo:service interface="com.mr.content.service.ContentService"
+                   ref="contentServiceImpl" timeout="30000"/>
+
+</beans>

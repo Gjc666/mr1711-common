@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启注解-->
+    <context:annotation-config/>
+
+    <!-- 连接 redis 通过连接池-->
+    <bean id="jedisPool" class="redis.clients.jedis.JedisPool" >
+        <!-- 通过构造函数  添加属性  host:ip , port：端口号 -->
+        <constructor-arg name="host" value="127.0.0.1"/>
+        <constructor-arg name="port" value="6379"/>
+    </bean>
+
+    <!--通过spring创建 JedisClientPool 对象 -->
+    <bean class="com.mr.order.redis.JedisClientPool" id="jedisClientPool"></bean>
+
+
+</beans>

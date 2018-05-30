@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mr1711-parent</artifactId>
+        <groupId>com.mr</groupId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../mr1711-parent/pom.xml</relativePath>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>mr1711-manager</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>mr1711-model</module>
+        <module>mr1711-manager-mapper</module>
+        <module>mr1711-manager-service</module>
+        <module>mr1711-manager-interface</module>
+    </modules>
+
+    <dependencies>
+        <!--依赖common-->
+        <dependency>
+            <groupId>com.mr</groupId>
+            <artifactId>mr1711-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <!--设置访问路径-->
+                    <path>/</path>
+                    <!--设置端口号-->
+                    <port>8080</port>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
